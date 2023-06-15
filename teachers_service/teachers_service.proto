@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package auth;
+
+option go_package = "./";
+
+service TeachersService {
+  rpc GetTeacher(TeacherId) returns (Teacher) {}
+  rpc GetTeachers(GetTeachersRequest) returns (TeacherList) {}
+  rpc CreateTeacher(Teacher) returns (Teacher) {}
+  rpc DeleteTeacher(TeacherId) returns (Teacher) {}
+  rpc UpdateTeacher(Teacher) returns (Teacher) {}
+}
+
+
+message GetTeachersRequest {}
+
+message TeacherList {
+  repeated Teacher list = 1;
+}
+
+message Teacher {
+  int64 id = 1;
+  string name = 2;
+  string surname = 3;
+  string subject = 4;
+  int64 salary = 5;
+}
+
+message TeacherId {
+  int64 id = 1;
+}
