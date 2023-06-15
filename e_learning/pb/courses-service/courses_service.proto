@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package auth;
+
+option go_package = "./";
+
+service CoursesService {
+  rpc GetCourse(CourseId) returns (Course) {}
+  rpc GetCourses(GetCoursesRequest) returns (CourseList) {}
+  rpc CreateCourse(Course) returns (Course) {}
+  rpc DeleteCourse(CourseId) returns (Course) {}
+  rpc UpdateCourse(Course) returns (Course) {}
+}
+
+
+message GetCoursesRequest {}
+
+message CourseList {
+  repeated Course list = 1;
+}
+
+message Course {
+  int64 id = 1;
+  string model = 2;
+  string brand = 3;
+  int64 year = 4;
+  int64 price = 5;
+}
+
+message CourseId {
+  int64 id = 1;
+}
